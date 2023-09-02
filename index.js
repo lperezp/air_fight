@@ -35,15 +35,15 @@ const statePrincipal = {
         enemies.enableBody = true;
         enemies.physicsBodyType = Phaser.Physics.ARCADE;
 
-        for (const y = 0; y < 6; y++) {
-            for (const x = 0; x < 7; x++) {
+        for (let y = 0; y < 6; y++) {
+            for (let x = 0; x < 7; x++) {
                 const enemy = enemies.create(x * 40, y * 20, 'enemy')
                 enemy.anchor.setTo(0.5)
             }
         }
 
-        enemy.x = 50
-        enemy.y = 30
+        enemies.x = 50
+        enemies.y = 30
 
         const animation = game.add.tween(enemies).to({ x: 100 }, 1000, Phaser.Easing.Linear.None, true, 0, 1000, true)
     },
@@ -68,7 +68,7 @@ const statePrincipal = {
     }
 }
 
-function collision() {
+function collision(bullet, enemy) {
     bullet.kill();
     enemy.kill();
 }
